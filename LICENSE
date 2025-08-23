@@ -1,0 +1,57 @@
+MIT License
+
+Copyright (c) 2025 apastinante
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+================================================================================
+
+ADDITIONAL TERMS AND ACKNOWLEDGEMENTS:
+
+This software builds upon educational materials and theoretical foundations
+provided by:
+
+- CERN Accelerator School (CAS) - Introductory Course on Accelerator Physics
+- CERN SY-RF-BR Section - RF Systems and Beam Dynamics Group
+- The broader accelerator physics community
+
+EDUCATIONAL USE:
+This software is primarily intended for educational and research purposes in
+the field of accelerator physics and beam dynamics. Users are encouraged to
+cite the original CAS course materials and relevant academic references when
+using this software in academic work or publications.
+
+ATTRIBUTION:
+When using this software in academic work, presentations, or publications,
+please include the following attribution:
+
+"Multi-Harmonic Particle Tracking Simulation, A.L. Pastinante, 2025"
+
+DISCLAIMER:
+This software is provided for educational purposes. While every effort has
+been made to ensure accuracy, the authors make no warranty regarding the
+correctness of physical models or numerical implementations for any specific
+accelerator design or operational scenario.
+
+CONTRIBUTIONS:
+Contributions to this project are welcome and will be considered under the
+same MIT License terms. Contributors retain copyright to their contributions
+while granting the same MIT License permissions to the project.
+
+For questions regarding licensing or usage, please contact:
+Anibal Luciano Pastinante (anibalpastinante@gmail.com)
