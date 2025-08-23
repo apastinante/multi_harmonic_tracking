@@ -299,11 +299,19 @@ run_multi_harmonic_animation(
 
 ### Potential Well and Separatrix Variations
 
-![Voltage Comparison](images/voltage_comparison.png)
-*Comparison of RF voltage waveforms for different harmonic combinations*
+![Double Harmonic](images/double_harmonic_pot_sep.png)
+*Double Harmonic RF voltage waveform in Bunch Lengthening Mode for different acceleration rates*
 
-![Potential Evolution](images/potential_evolution.png)
-*Evolution of RF potential shape with varying harmonic ratios*
+![Triple Harmonic](images/triple_harmonic_pot_sep.png)
+*Triple Harmonic RF voltage waveform for different acceleration rates*
+
+### Filling Factor Effect for Different Phasings during Acceleration
+
+![Incorrect BLM Phasing Effect on Bunch Profiles](images/ff_effect_bad_blm_phasing.png)
+*Double Harmonic RF system in incorrectly phased Bunch Lengthening Mode during acceleration (profiles produced with BLonD-see references)*
+
+![Correct BLM Phasing Effect on Bunch Profiles](images/ff_effect_good_blm_phasing.png)
+*Double Harmonic RF system in correctly phased Bunch Lengthening Mode during acceleration (profiles produced with BLonD-see references)*
 
 ---
 
@@ -313,12 +321,12 @@ run_multi_harmonic_animation(
 
 <!-- Placeholder for animation GIFs -->
 ![Basic Evolution](animations/basic_evolution.gif)
-*1000 particles evolving in a single harmonic RF system over 500 turns*
+*30000 particles evolving in a single harmonic RF system over 500 turns*
 
 ### Dynamic RF Parameter Changes
 
 ![Parameter Modification](animations/parameter_modification.gif)
-*Animation showing particles adapting to RF parameter changes mid-simulation*
+*Animation showing particles adapting to RF parameter changes mid-simulation (with Hamiltonian contour lines)*
 
 ## 📐 Parameters Guide
 
