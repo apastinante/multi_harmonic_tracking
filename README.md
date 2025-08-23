@@ -1,5 +1,188 @@
+# Multi-Harmonic Particle Tracking
+
+A comprehensive educational tool for simulating longitudinal beam dynamics in multi-harmonic RF systems. This notebook implements particle tracking algorithms based on the theory presented in the Introductory CAS lectures on Longitudinal Beam Dynamics.
+
+**Author:** Anibal Luciano Pastinante (anibalpastinante@gmail.com)  
+**Date:** 22/08/2025  
+**Acknowledgements:** CAS team and CERN's SY-RF-BR section
 
 ---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Theory Background](#theory-background)
+- [Core Functions](#core-functions)
+- [Classes](#classes)
+- [Examples](#examples)
+- [Visualization Gallery](#visualization-gallery)
+- [Animation Examples](#animation-examples)
+- [Parameters Guide](#parameters-guide)
+- [Advanced Usage](#advanced-usage)
+- [Contributing](#contributing)
+- [References](#references)
+
+---
+
+## 🔍 Overview
+
+This notebook provides a complete framework for:
+- **Multi-harmonic RF voltage calculations**
+- **RF potential computation and visualization**
+- **Separatrix calculation and plotting**
+- **Particle beam tracking and evolution**
+- **Interactive animations with dynamic RF parameter changes**
+- **Phase space analysis and trajectory visualization**
+
+The implementation supports both **below-transition** and **above-transition** energy regimes, making it suitable for studying various accelerator scenarios.
+
+---
+
+## ✨ Features
+
+### 🧮 Core Physics
+- ✅ Multi-harmonic RF voltage synthesis
+- ✅ RF potential calculation with numerical integration
+- ✅ Hamiltonian formulation for phase space dynamics
+- ✅ Separatrix computation for arbitrary harmonic combinations
+- ✅ Particle tracking with symplectic integration
+
+### 📊 Visualization
+- ✅ Interactive separatrix plotting with customizable colors and styles
+- ✅ Phase space trajectory visualization
+- ✅ RF voltage and potential plotting
+- ✅ 2D particle distribution histograms
+- ✅ Animated particle evolution with phase/energy histograms
+
+### 🎬 Animation
+- ✅ Real-time particle tracking animations
+- ✅ Dynamic RF parameter modifications during animation
+- ✅ Automatic separatrix updates when parameters change
+- ✅ GIF export for presentations and documentation
+
+### 🔧 Flexibility
+- ✅ Support for arbitrary number of harmonics
+- ✅ Configurable harmonic ratios, phases, and frequencies
+- ✅ Both acceleration and deceleration scenarios
+- ✅ Customizable initial particle distributions
+
+---
+
+## 🛠️ Installation
+
+### Prerequisites
+```bash
+pip install numpy matplotlib scipy ipywidgets
+```
+
+### Optional Dependencies
+For enhanced functionality:
+```bash
+pip install pillow  # For GIF creation
+pip install ffmpeg-python  # For video export
+```
+
+### Setup
+1. Clone or download the notebook
+2. Ensure all dependencies are installed
+3. Launch Jupyter Notebook or JupyterLab
+4. Open `Multi_Harmonic_Tracking.ipynb`
+
+---
+
+## 🚀 Quick Start
+
+### Basic Multi-Harmonic System Setup
+```python
+# Define accelerator parameters
+energy = 10          # [MeV], [GeV], [TeV]
+beta = 0.9           # relativistic velocity factor
+charge = 1           # in units of electron charge
+V = 2               # RF voltage [V], [kV], [MV]
+main_harmonic = 1   # Harmonic number of RF system
+eta = -0.01         # 1/γ_transition² - 1/γ²
+
+# Multi-harmonic configuration
+r = [1, 0.9, 0.8]                    # Voltage ratios [V₁/V₁, V₂/V₁, V₃/V₁]
+h = [1, 2, 3]                        # Harmonic numbers
+Phis = [0*np.pi, np.pi, 0*np.pi]     # Phase shifts
+dE_s = 0                             # Energy gain per turn
+
+# Create particle beam
+particles = generateBunch(bunch_position=0, bunch_length=0.5, 
+                         bunch_energy=0, energy_spread=0.5, 
+                         n_macroparticles=1000)
+
+particle_beam = ParticleBeam(
+    particles=particles, V=V, r=r, h=h, dE_s=dE_s, Phis=Phis,
+    below_transition=(eta < 0), constant=abs(main_harmonic * eta / beta**2), 
+    E=energy
+)
+```
+
+### Quick Visualization
+```python
+# Plot voltage, potential, and separatrices
+particle_beam.plot_all()
+
+# Track particles for 1000 turns
+particle_beam.advance_x_turns(1000)
+particle_beam.plot_state()
+```
+
+---
+
+## 📚 Theory Background
+
+### Multi-Harmonic RF Systems
+
+The total RF voltage in a multi-harmonic system is given by:
+
+\begin{equation}
+V(\phi) = V_1 \sum_{h=1}^{h_n} r_h (\sin {(h\phi + \Phi_{(h)})}
+\end{equation}
+
+Where:
+- $rᵢ$ = voltage ratio of harmonic i to fundamental
+- $V_1$ = fundamental harmonic voltage
+- $h_n$ = harmonic number
+- $\Phi_{(h)}$ = phase offset of harmonic i
+
+### RF Potential
+
+The RF potential is computed by integrating the voltage:
+
+$U(\phi) = - \frac{e}{2\pi} \int_{\phi_s}^{\phi} [V(\phi') - V(\phi_s)] d\phi' = - \frac{e}{2\pi} \int_{\phi_s}^{\phi} [V(\phi') - \Delta E_s] d\phi'$
+
+Where:
+- $\Delta E_s$ = energy gain per turn of the synchronous particle
+- $\phi_s$ = synchronous particle phase (computed solving $\Delta E_s = V(\phi_s)$
+- $e$ = particle charge
+  
+### Hamiltonian Dynamics
+
+The system Hamiltonian is:
+$H=\frac{1}{2} \frac{h \eta \omega_0^2}{\beta^2 E}\left(\frac{\Delta E}{\omega_0}\right)^2 + U(\phi)$
+
+Where:
+- $\eta$ = phase slip factor ($\eta = \frac{1}{\gamma_T^2} - \frac{1}{\gamma^2}$ where $\gamma_T$ is the transition gamma of the accelerator)
+- $\beta$ and $\gamma$ = relativistic factors 
+- $E$ = total particle energy (approximated with $E_s$ to not track individual particle energy)
+- $\omega_0$ = synchronous particle revolution frequency
+
+### Particle Tracking
+
+The symplectic tracking equations are:
+
+\begin{equation}
+\begin{aligned}
+& \Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) - \Delta E_s =\Delta E_n+e \sum_{h=1}^{h_n} V_{(h)} (\sin {(h\phi_{n} + \Phi_{(h)})} - \sin{({h\phi_s} + \Phi_{(h)}}) \\
+& \phi_{n+1}=\phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1} .
+\end{aligned}
+\end{equation}
 
 ## 🔧 Core Functions
 
