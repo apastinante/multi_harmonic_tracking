@@ -27,7 +27,7 @@ A comprehensive educational tool for simulating longitudinal beam dynamics in mu
 
 ---
 
-## 🔍 Overview
+##  Overview 
 
 This notebook provides a complete framework for:
 - **Multi-harmonic RF voltage calculations**
