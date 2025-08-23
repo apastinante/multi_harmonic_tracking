@@ -326,7 +326,7 @@ run_multi_harmonic_animation(
 ### Dynamic RF Parameter Changes
 
 ![Parameter Modification](animations/parameter_modification.gif)
-*Animation showing particles adapting to RF parameter changes mid-simulation (with Hamiltonian contour lines)*
+*Animation showing particles adapting to RF parameter changes mid-simulation with Hamiltonian contour lines (had to be compressed to be uploaded, that is why quality is low)*
 
 ## 📐 Parameters Guide
 
