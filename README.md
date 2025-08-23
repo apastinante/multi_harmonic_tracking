@@ -194,7 +194,7 @@ $\phi_{n+1}= \phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1}$
 - **`separatrices_mh_colored(...)`** - Plot colored separatrices with fill
 - **`separatrices_mh_contours(...)`** - Plot separatrices as contour lines
 - **`plot_potentials_multi_phi_s(...)`** - Multi-potential plotting
-- **`dE_to_phi_s(...)`** - Compute synchronous phase
+- **`dE_to_phi_s(...)`** - Compute synchronous phase from synchronous particle energy gain per turn $\Delta E_s$
 
 ### Utility Functions
 - **`generateBunch(...)`** - Create initial particle distributions
@@ -247,6 +247,7 @@ animation.run_animation()
 ### Example 1: Single Harmonic System
 ```python
 # Simple single harmonic
+eta = -0.01 # has to be below transition
 r = [1]
 h = [1] 
 Phis = [0]
@@ -260,6 +261,7 @@ beam.plot_all()
 ### Example 2: Dual Harmonic Bunch Shortening
 ```python
 # Bunch shortening with 2nd harmonic
+eta= -0.01 # has to be below transition
 r = [1, 0.5]
 h = [1, 2]
 Phis = [0, 0]  # In-phase for bunch shortening
@@ -270,9 +272,10 @@ beam.advance_x_turns(1000)
 beam.plot_state()
 ```
 
-### Example 3: Triple Harmonic with Phase Animation
+### Example 3: Triple Harmonic Bunch Lengthening with Phase Animation
 ```python
 # Triple harmonic with phase modification
+eta = -0.01 # has to be below transition
 r = [1, 0.9, 0.8]
 h = [1, 2, 3]
 Phis = [0, np.pi, 0]
@@ -293,22 +296,8 @@ run_multi_harmonic_animation(
 
 ## 🖼️ Visualization Gallery
 
-### Separatrix Examples
 
-<!-- Placeholder for separatrix images -->
-![Single Harmonic Separatrix](images/single_harmonic_separatrix.png)
-*Single harmonic system showing classic sinusoidal potential and elliptical separatrix*
-
-![Dual Harmonic Bunch Shortening](images/dual_harmonic_shortening.png)
-*Dual harmonic system (2nd harmonic in-phase) creating flattened potential for bunch shortening*
-
-![Dual Harmonic Bunch Lengthening](images/dual_harmonic_lengthening.png)
-*Dual harmonic system (2nd harmonic out-of-phase) creating peaked potential for bunch lengthening*
-
-![Triple Harmonic Complex](images/triple_harmonic_complex.png)
-*Triple harmonic system showing complex multi-well potential structure*
-
-### Potential Well Variations
+### Potential Well and Separatrix Variations
 
 ![Voltage Comparison](images/voltage_comparison.png)
 *Comparison of RF voltage waveforms for different harmonic combinations*
@@ -326,27 +315,10 @@ run_multi_harmonic_animation(
 ![Basic Evolution](animations/basic_evolution.gif)
 *1000 particles evolving in a single harmonic RF system over 500 turns*
 
-### Bunch Shortening Animation
-
-![Bunch Shortening](animations/bunch_shortening.gif)
-*Demonstration of bunch shortening using 2nd harmonic in-phase*
-
 ### Dynamic RF Parameter Changes
 
 ![Parameter Modification](animations/parameter_modification.gif)
 *Animation showing particles adapting to RF parameter changes mid-simulation*
-
-### Multi-Well Dynamics
-
-![Multi-Well](animations/multi_well_dynamics.gif)
-*Complex particle dynamics in multi-harmonic system with multiple potential wells*
-
-### Below vs Above Transition
-
-![Transition Comparison](animations/transition_comparison.gif)
-*Side-by-side comparison of particle behavior below and above transition energy*
-
----
 
 ## 📐 Parameters Guide
 
@@ -371,7 +343,7 @@ run_multi_harmonic_animation(
 | `n_delta` | Energy grid points | 400 | Higher = finer energy resolution |
 | `phi_margin_percent` | Phase range margin | 20% | For edge effect handling |
 | `outer_fill_alpha` | Separatrix fill transparency | 0.2 | 0 = transparent, 1 = opaque |
-| `inner_alpha` | Inner separatrix transparency | 0.35 | For multiple separatrices |
+| `inner_alpha` | Inner separatrix contour transparency | 0.35 | For multiple separatrices |
 
 ---
 
@@ -445,14 +417,10 @@ We welcome contributions! Areas where help is needed:
 - Animation rendering issues
 
 ### 💡 Feature Requests
-- Additional RF waveform types (sawtooth, square wave)
-- 3D visualization capabilities
-- Integration with accelerator design codes
-
+- Impedance Intergration
+  
 ### 📝 Documentation
-- More physics background explanations
 - Additional example notebooks
-- Tutorial videos
 
 ### 🔧 Code Improvements
 - Performance optimization
@@ -471,21 +439,17 @@ We welcome contributions! Areas where help is needed:
 ## 📚 References
 
 ### Academic References
-1. **CAS - CERN Accelerator School**: "Introductory Course on Accelerator Physics" - Longitudinal Beam Dynamics lectures
-2. **H. Wiedemann**: "Particle Accelerator Physics", 4th Edition, Springer (2015)
-3. **S.Y. Lee**: "Accelerator Physics", 3rd Edition, World Scientific (2012)
-4. **K. Wille**: "The Physics of Particle Accelerators", Oxford University Press (2000)
+1. **Introductory CAS Proceedings- CERN Accelerator School**: "Introductory Course on Accelerator Physics" - Longitudinal Beam Dynamics lectures
+2. **S.Y. Lee**: "Accelerator Physics", 3rd Edition, World Scientific (2012)
 
 ### Technical Documentation
-- **CERN SY-RF-BR Section**: RF system documentation and beam dynamics studies
 - **CERN CAS**: Course materials and simulation examples
-- **PyAccelerator**: Python accelerator physics library documentation
+
 
 ### Related Software
+- **BLonD**: Beam Longitudinal Dynamics Code - CERN
 - **MAD-X**: Methodical Accelerator Design - CERN
-- **Elegant**: Accelerator simulation code - ANL
-- **BMAD**: Relativistic charged particle simulation library - Cornell
-- **PyORBIT**: Space charge simulation toolkit
+- **Xsuite**: Beam Dynamics Simulator - CERN & CHART
 
 ---
 
@@ -501,7 +465,7 @@ This educational software is provided under the MIT License. See `LICENSE` file 
 **Email:** anibalpastinante@gmail.com  
 **Institution:** CERN - European Organization for Nuclear Research
 
-For questions, suggestions, or collaboration opportunities, please don't hesitate to reach out!
+For questions, or suggestions, please don't hesitate to reach out!
 
 ---
 
