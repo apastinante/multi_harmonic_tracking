@@ -178,11 +178,10 @@ Where:
 
 The symplectic tracking equations are:
 
-
-$ \Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) - \Delta E_s =\Delta E_n+e \sum_{h=1}^{h_n} V_{(h)} (\sin {(h\phi_{n} + \Phi_{(h)})} - \sin{({h\phi_s} + \Phi_{(h)}})$
-
-$ \phi_{n+1}=\phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1} $
-
+\begin{aligned}
+& \Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) - \Delta E_s =\Delta E_n+e \sum_{h=1}^{h_n} V_{(h)} (\sin {(h\phi_{n} + \Phi_{(h)})} - \sin{({h\phi_s} + \Phi_{(h)}}) \\
+& \phi_{n+1}= \phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1} 
+\end{aligned}
 
 ## 🔧 Core Functions
 
