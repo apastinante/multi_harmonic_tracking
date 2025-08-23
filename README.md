@@ -41,7 +41,7 @@ The implementation supports both **below-transition** and **above-transition** e
 
 ---
 
-## ✨ Features
+##  Features
 
 ### 🧮 Core Physics
 - ✅ Multi-harmonic RF voltage synthesis
@@ -71,7 +71,7 @@ The implementation supports both **below-transition** and **above-transition** e
 
 ---
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 ```bash
@@ -93,7 +93,7 @@ pip install ffmpeg-python  # For video export
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Basic Multi-Harmonic System Setup
 ```python
@@ -135,7 +135,7 @@ particle_beam.plot_state()
 
 ---
 
-## 📚 Theory Background
+## Theory Background
 
 ### Multi-Harmonic RF Systems
 
@@ -182,7 +182,7 @@ $\Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) 
 
 $\phi_{n+1}= \phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1}$
 
-## 🔧 Core Functions
+## Core Functions
 
 ### RF System Functions
 - **`voltage_mh(V, r, h, phi, Phis)`** - Calculate multi-harmonic voltage
@@ -202,7 +202,7 @@ $\phi_{n+1}= \phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1}$
 
 ---
 
-## 🏗️ Classes
+##  Classes
 
 ### `ParticleBeam`
 
@@ -242,7 +242,7 @@ animation.run_animation()
 
 ---
 
-## 📖 Examples
+## Examples
 
 ### Example 1: Single Harmonic System
 ```python
@@ -294,7 +294,7 @@ run_multi_harmonic_animation(
 
 ---
 
-## 🖼️ Visualization Gallery
+## Visualization Gallery
 
 
 ### Potential Well and Separatrix Variations
@@ -318,7 +318,7 @@ run_multi_harmonic_animation(
 
 ---
 
-## 🎬 Animation Examples
+## Animation Examples
 
 ### Basic Particle Evolution
 
@@ -334,7 +334,7 @@ run_multi_harmonic_animation(
 ![Parameter Modification (5-H)](animations/quintuple_parameter_modification.gif)
 *Animation showing quintuple-harmonic operation and particles adapting to RF parameter changes (mainly phasing) mid-simulation with Hamiltonian contour lines*
 
-## 📐 Parameters Guide
+## Parameters Guide
 
 ### Essential Parameters
 
@@ -361,7 +361,7 @@ run_multi_harmonic_animation(
 
 ---
 
-## 🔬 Advanced Usage
+## Advanced Usage
 
 ### Custom Initial Distributions
 
@@ -421,7 +421,7 @@ df.plot(x='ratio', y=['phase_rms', 'energy_rms'])
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Areas where help is needed:
 
@@ -450,7 +450,7 @@ We welcome contributions! Areas where help is needed:
 
 ---
 
-## 📚 References
+## References
 
 ### Academic References
 1. **Introductory CAS Proceedings- CERN Accelerator School**: "Introductory Course on Accelerator Physics" - Longitudinal Beam Dynamics lectures
@@ -467,13 +467,13 @@ We welcome contributions! Areas where help is needed:
 
 ---
 
-## 📄 License
+## License
 
 This educational software is provided under the MIT License. See `LICENSE` file for details.
 
 ---
 
-## 📞 Contact
+## Contact
 
 **Author:** Anibal Luciano Pastinante  
 **Email:** anibalpastinante@gmail.com  
