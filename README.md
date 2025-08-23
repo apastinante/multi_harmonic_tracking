@@ -37,7 +37,7 @@ This notebook provides a complete framework for:
 - **Interactive animations with dynamic RF parameter changes**
 - **Phase space analysis and trajectory visualization**
 
-The implementation supports both **below-transition** and **above-transition** energy regimes, making it suitable for studying various accelerator scenarios.
+The implementation supports both **below-transition** and **above-transition** energy regimes, making it suitable for gaining intuition on various accelerator scenarios.
 
 ---
 
@@ -45,7 +45,7 @@ The implementation supports both **below-transition** and **above-transition** e
 
 ### 🧮 Core Physics
 - ✅ Multi-harmonic RF voltage synthesis
-- ✅ RF potential calculation with numerical integration
+- ✅ RF potential calculation with numerical integration (without impedance effects)
 - ✅ Hamiltonian formulation for phase space dynamics
 - ✅ Separatrix computation for arbitrary harmonic combinations
 - ✅ Particle tracking with symplectic integration
@@ -141,12 +141,12 @@ particle_beam.plot_state()
 
 The total RF voltage in a multi-harmonic system is given by:
 
-\begin{equation}
-V(\phi) = V_1 \sum_{h=1}^{h_n} r_h (\sin {(h\phi + \Phi_{(h)})}
-\end{equation}
+
+$V(\phi) = V_1 \sum_{h=1}^{h_n} r_h (\sin {(h\phi + \Phi_{(h)})}$
+
 
 Where:
-- $rᵢ$ = voltage ratio of harmonic i to fundamental
+- $r_h$ = voltage ratio of harmonic i to fundamental
 - $V_1$ = fundamental harmonic voltage
 - $h_n$ = harmonic number
 - $\Phi_{(h)}$ = phase offset of harmonic i
@@ -165,6 +165,7 @@ Where:
 ### Hamiltonian Dynamics
 
 The system Hamiltonian is:
+
 $H=\frac{1}{2} \frac{h \eta \omega_0^2}{\beta^2 E}\left(\frac{\Delta E}{\omega_0}\right)^2 + U(\phi)$
 
 Where:
@@ -177,12 +178,10 @@ Where:
 
 The symplectic tracking equations are:
 
-\begin{equation}
-\begin{aligned}
-& \Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) - \Delta E_s =\Delta E_n+e \sum_{h=1}^{h_n} V_{(h)} (\sin {(h\phi_{n} + \Phi_{(h)})} - \sin{({h\phi_s} + \Phi_{(h)}}) \\
-& \phi_{n+1}=\phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1} .
-\end{aligned}
-\end{equation}
+
+$ \Delta E_{n+1}= \Delta E_n+e  (V(\phi_n) - V(\phi_s)) = \Delta E_n+e V(\phi_n) - \Delta E_s =\Delta E_n+e \sum_{h=1}^{h_n} V_{(h)} (\sin {(h\phi_{n} + \Phi_{(h)})} - \sin{({h\phi_s} + \Phi_{(h)}})$
+$ \phi_{n+1}=\phi_n+\frac{2 \pi h_1 \eta}{\beta^2 E} \Delta E_{n+1} $
+
 
 ## 🔧 Core Functions
 
