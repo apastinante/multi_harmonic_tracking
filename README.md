@@ -331,6 +331,9 @@ run_multi_harmonic_animation(
 ![Parameter Modification](animations/parameter_modification.gif)
 *Animation showing particles adapting to RF parameter changes mid-simulation with Hamiltonian contour lines (had to be compressed to be uploaded, that is why quality is low)*
 
+![Parameter Modification (5-H)](animations/quintuple_parameter_modification.gif)
+*Animation showing quintuple-harmonic operation and particles adapting to RF parameter changes (mainly phasing) mid-simulation with Hamiltonian contour lines*
+
 ## 📐 Parameters Guide
 
 ### Essential Parameters
