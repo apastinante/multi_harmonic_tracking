@@ -305,6 +305,9 @@ run_multi_harmonic_animation(
 ![Triple Harmonic](images/triple_harmonic_pot_sep.png)
 *Triple Harmonic RF voltage waveform for different acceleration rates*
 
+![Quintuple Harmonic](images/quintuple_harmonic_pot_sep.png)
+*Quintuple Harmonic RF voltage waveform for different acceleration rates*
+
 ### Filling Factor Effect for Different Phasings during Acceleration
 
 ![Incorrect BLM Phasing Effect on Bunch Profiles](images/ff_effect_bad_blm_phasing.png)
