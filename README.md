@@ -211,8 +211,10 @@ Main class for particle beam simulation and visualization.
 **Key Methods:**
 - `plus_one_turn()` - Advance particles by one turn
 - `advance_x_turns(n)` - Advance particles by n turns
-- `plot_state()` - Plot current particle distribution
-- `plot_trajectory(turns)` - Plot particle trajectories
+- `plot_state()` - Plot current particle distribution in phase-space
+- `plot_phase_space()` - Plot current particle distribution in phase-space with 1D histograms
+- `advance_and_plot_phase_space(n)` - Plot the current phase-space, advance n turns, and plot the final phase-space; both plots with 1D histograms and the same limits for comparison
+- `plot_trajectory(n)` - Plot particle trajectories for n turns
 - `plot_all()` - Comprehensive voltage/potential/separatrix plot
 - `modify_RF_system()` - Change RF parameters during simulation
 
