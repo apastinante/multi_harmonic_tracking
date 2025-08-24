@@ -270,6 +270,7 @@ beam = ParticleBeam(particles, V=2, r=r, h=h, dE_s=0, Phis=Phis,
                    below_transition=True, constant=0.01, E=10)
 beam.advance_x_turns(1000)
 beam.plot_state()
+plt.show()
 ```
 
 ### Example 3: Triple Harmonic Bunch Lengthening with Phase Animation
@@ -290,8 +291,68 @@ run_multi_harmonic_animation(
     modification=[V, r, h, [0, 0, np.pi], dE_s],  # Change 2nd harmonic phase
     modification_turn=300
 )
-```
 
+
+```
+### Example 4: Double and Triple Harmonic Bunch Lengthening Comparison
+```python
+# Generate initial particle distribution
+n_particles = 30000
+bunch_position = 0
+bunch_length = 4 # rad
+bunch_energy = 0
+energy_spread = 40 # Whatever units the initial energy is in
+type = 'gaussian' # can be 'gaussian' or 'rectangular'
+
+particle_phases, particle_energies = generateBunch(bunch_position, bunch_length, 
+                                                  bunch_energy, energy_spread, n_particles, type)
+
+
+
+# Create initial particle state
+particles = np.vstack([particle_phases, particle_energies])
+
+
+
+# Create 2H ParticleBeam instance
+particle_beam2h = ParticleBeam(
+    particles=particles,
+    V=V,  # from your parameters
+    r=[1,0.9],  # from your parameters  
+    h=[1,2],  # from your parameters
+    dE_s=0,  # from your parameters
+    Phis=[0* np.pi,  np.pi],  # from your parameters
+    below_transition=below_transition,  # from your parameters
+    constant=constant,  # from your parameters
+    E=energy,  # from your parameters
+    use_contour_bg=True
+)
+
+# Plot initial and final phase space after 1000 turns
+hist2_x_ylim, hist2_y_xlim = particle_beam2h.advance_and_plot_phase_space(1000)
+plt.show()
+
+
+# Create 3H ParticleBeam instance
+particle_beam3h = ParticleBeam(
+    particles=particles,
+    V=V,  # from your parameters
+    r=[1, 1.3, 0.9],  # from your parameters  
+    h=[1,2,3],  # from your parameters
+    dE_s=0,  # from your parameters
+    Phis=[ 0* np.pi,  np.pi, 0*np.pi],  # from your parameters
+    below_transition=below_transition,  # from your parameters
+    constant=constant,  # from your parameters
+    E=energy,  # from your parameters
+    use_contour_bg=True
+)
+
+
+# Plot initial and final phase space after 1000 turns
+hist_x_ylim, hist_y_xlim = particle_beam3h.advance_and_plot_phase_space(1000, override_limits=(hist2_x_ylim, hist2_y_xlim))
+plt.show()
+
+```
 ---
 
 ## Visualization Gallery
